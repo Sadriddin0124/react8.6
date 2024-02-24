@@ -6,10 +6,10 @@ const AddProductPage = () => {
       <form className={styles.form}>
         <input type="text" placeholder='title' name='title' required/>
         <select name="cat" id="cat">
-          <option value={false}>Choose Category</option>
-          <option value={true}>Kitchen</option>
-          <option value={false}>Phone</option>
-          <option value={false}>Computer</option>
+          <option value={`${false}`}>Choose Category</option>
+          <option value={`${true}`}>Kitchen</option>
+          <option value={`${false}`}>Phone</option>
+          <option value={`${false}`}>Computer</option>
         </select>
         <input type="number" placeholder='price' name='price' required/>
         <input type="number" placeholder='stock' name='stock' required/>
