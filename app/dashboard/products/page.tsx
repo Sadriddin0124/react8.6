@@ -5,6 +5,7 @@ import React from "react";
 import styles from "@/app/ui/dashboard/products/products.module.css";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import { fetchProducts } from "@/app/lib/data";
+import { deleteProduct } from "@/app/lib/productAction";
 const Products = async ({
   searchParams,
 }: {
@@ -49,14 +50,17 @@ const Products = async ({
               <td>{item?.stock}</td>
               <td>
                 <div className={styles.buttons}>
-                  <Link href={`/dashboard/products/1`}>
+                  <Link href={`/dashboard/products/${item?._id}`}>
                     <button className={`${styles.button} ${styles.view}`}>
                       View
                     </button>
                   </Link>
+                  <form action={deleteProduct}>
+                    <input type="text" name="id" value={item?._id} hidden/>
                   <button className={`${styles.button} ${styles.delete}`}>
                     Delete
                   </button>
+                  </form>
                 </div>
               </td>
             </tr>

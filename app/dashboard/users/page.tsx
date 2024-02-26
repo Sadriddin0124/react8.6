@@ -6,6 +6,7 @@ import Search from "@/app/ui/dashboard/search/search";
 import Pagination from "@/app/ui/dashboard/pagination/pagination";
 import { fetchUsers } from "@/app/lib/data";
 import { IUserPromise } from "@/app/types/users";
+import { deleteUser } from "@/app/lib/userAction";
 const Users = async ({
   searchParams,
 }: {
@@ -55,14 +56,17 @@ const Users = async ({
                 <td>{item?.isActive ? "Active" : "Passive"}</td>
                 <td>
                   <div className={styles.buttons}>
-                    <Link href={`/dashboard/users/1`}>
+                    <Link href={`/dashboard/users/${item?._id}`}>
                       <button className={`${styles.button} ${styles.view}`}>
                         View
                       </button>
                     </Link>
+                    <form action={deleteUser}>
+                      <input type="text" hidden name="id" value={item?._id}/>
                     <button className={`${styles.button} ${styles.delete}`}>
                       Delete
                     </button>
+                    </form>
                   </div>
                 </td>
               </tr>
